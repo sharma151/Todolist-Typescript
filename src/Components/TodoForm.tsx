@@ -1,68 +1,65 @@
-// src/components/TodoForm.tsx
 import React, { useState } from 'react';
-import { Todo } from '../pages/TodoApp';
+
 
 interface TodoFormProps {
-  dispatch: React.Dispatch<{
-    type: 'ADD';
-    payload: Todo;
-  }>;
+  dispatch: React.Dispatch<{ type: 'ADD'; payload: Todo }>;
 }
 
 const TodoForm: React.FC<TodoFormProps> = ({ dispatch }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [dueDate, setDueDate] = useState('');
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    dueDate: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const { title, dueDate } = formData;
+
     if (!title || !dueDate) {
       alert('Title and Due Date are required.');
       return;
     }
+
     dispatch({
       type: 'ADD',
-      payload: {
-        id: Date.now().toString(),
-        title,
-        description,
-        dueDate,
-        status: 'pending',
-      },
+      payload: { ...formData, id: Date.now().toString(), status: 'pending' },
     });
-    setTitle('');
-    setDescription('');
-    setDueDate('');
+    setFormData({ title: '', description: '', dueDate: '' });
   };
 
   return (
     <form className="mb-4" onSubmit={handleSubmit}>
-      <div className="mb-2">
-        <label className="block mb-1">Title</label>
-        <input
-          type="text"
-          className="w-full p-2 border rounded"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div className="mb-2">
-        <label className="block mb-1">Description</label>
-        <textarea
-          className="w-full p-2 border rounded"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-      <div className="mb-2">
-        <label className="block mb-1">Due Date</label>
-        <input
-          type="date"
-          className="w-full p-2 border rounded"
-          value={dueDate}
-          onChange={(e) => setDueDate(e.target.value)}
-        />
-      </div>
+      {[
+        { label: 'Title', type: 'text', name: 'title' },
+        { label: 'Description', type: 'textarea', name: 'description' },
+        { label: 'Due Date', type: 'date', name: 'dueDate' },
+      ].map(({ label, type, name }) => (
+        <div key={name} className="mb-2">
+          <label className="block mb-1">{label}</label>
+          {type === 'textarea' ? (
+            <textarea
+              name={name}
+              value={(formData as any)[name]}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+            />
+          ) : (
+            <input
+              type={type}
+              name={name}
+              value={(formData as any)[name]}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+            />
+          )}
+        </div>
+      ))}
       <button type="submit" className="bg-blue-500 text-white p-2 rounded">
         Add Todo
       </button>
