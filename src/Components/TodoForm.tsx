@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import {Todo } from '../Pages/TodoApp'
 
 interface TodoFormProps {
   dispatch: React.Dispatch<{ type: 'ADD'; payload: Todo }>;
