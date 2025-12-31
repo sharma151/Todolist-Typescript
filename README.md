@@ -1,50 +1,80 @@
-# React + TypeScript + Vite
+# 📝 React TypeScript Todo List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and clean **Todo List application built with React and TypeScript**.  
+The app uses a **sidebar-based filtering system** and an intuitive UI to manage daily tasks efficiently.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+### 📂 Sidebar Filters
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **All Todos** – View all tasks
+- **Pending** – View incomplete tasks
+- **Completed** – View completed tasks
 
-- Configure the top-level `parserOptions` property like this:
+### ✍️ Todo Management
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Add a todo with:
+  - **Title**
+  - **Description**
+  - **Due Date**
+- View todos in a clean card layout
+- **Mark todo as done**
+- **Delete todo**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 🎯 UI Overview
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Left sidebar for filtering todos
+- Right section for:
+  - Creating new todos
+  - Viewing todo list
+- Status clearly shown as **Pending** or **Completed**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## 🖼️ Screenshots
+
+> Add screenshots inside a `screenshots/` folder and update paths if needed.
+
+## 🛠️ Tech Stack
+
+- React
+- TypeScript
+- CSS / Tailwind / Bootstrap (as used)
+- JavaScript Date API
+
+---
+
+## 📁 Project Structure
+
+src/
+├── components/
+│ ├── Sidebar.tsx
+│ ├── TodoForm.tsx
+│ ├── TodoReducer.tsx
+│ └── TodoList.tsx
+├── Pages/
+│ └── TodoApp.ts
+├── App.tsx
+├── main.tsx
+└── index.css
+└── App.css
+
+## How to Run the Project (Yarn)
+
+## Clone the repository
+
+git clone https://github.com/sharma151/Todolist-Typescript.git
+
+## Go to project directory
+
+cd TODOLIST-TYPESCRIPT
+
+## Install dependencies
+
+yarn install
+
+## Start development server
+
+yarn dev
