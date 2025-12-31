@@ -33,10 +33,6 @@ The app uses a **sidebar-based filtering system** and an intuitive UI to manage 
 
 ---
 
-## 🖼️ Screenshots
-
-> Add screenshots inside a `screenshots/` folder and update paths if needed.
-
 ## 🛠️ Tech Stack
 
 - React
@@ -44,22 +40,7 @@ The app uses a **sidebar-based filtering system** and an intuitive UI to manage 
 - CSS / Tailwind / Bootstrap (as used)
 - JavaScript Date API
 
----
 
-## 📁 Project Structure
-
-src/
-├── components/
-│ ├── Sidebar.tsx
-│ ├── TodoForm.tsx
-│ ├── TodoReducer.tsx
-│ └── TodoList.tsx
-├── Pages/
-│ └── TodoApp.ts
-├── App.tsx
-├── main.tsx
-└── index.css
-└── App.css
 
 ## How to Run the Project (Yarn)
 
